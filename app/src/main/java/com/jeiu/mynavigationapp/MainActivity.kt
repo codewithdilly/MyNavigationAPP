@@ -10,8 +10,11 @@ import com.jeiu.mynavigationapp.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var bind = ActivityMainBinding.inflate(this.layoutInflater)
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_main)
+        var bind = ActivityMainBinding.inflate(layoutInflater)
         setContentView(bind.root)
-
     }
-}
+  }
+
+

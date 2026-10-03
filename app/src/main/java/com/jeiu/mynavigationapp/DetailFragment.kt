@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.jeiu.mynavigationapp.databinding.FragmentDetailBinding
 
 
+
 /**
  * A simple [Fragment] subclass.
  * Use the [DetailFragment.newInstance] factory method to
@@ -16,32 +17,28 @@ import com.jeiu.mynavigationapp.databinding.FragmentDetailBinding
  */
 class DetailFragment : Fragment() {
 
-    private var _binding : FragmentDetailBinding? = null
-    private val binding
-        get() = _binding!!
+    private var _binding: FragmentDetailBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_detail, container, false)
-        _binding = FragmentDetailBinding.inflate(
-            inflater,
-            container,
-            false
-        )
+    ): View {
+        _binding = FragmentDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val subject  =  arguments?.getString("subject") ?: "선택없음"
-        binding.txtResult.text = "선택한 항목: $subject"
+        val subject = arguments?.getString("subject") ?: ""
+        binding.txtResult.text = "선택한 항목 : $subject"
         binding.btnBack.setOnClickListener {
-            findNavController().popBackStack()  //아전화면
+            findNavController().popBackStack()
         }
     }
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

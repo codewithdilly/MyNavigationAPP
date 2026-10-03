@@ -3,14 +3,12 @@ plugins {
 }
 
 android {
-
-
-    namespace = "com.jeiu.mynavigationapp"
-    compileSdk {
-        version = release(36) {
-            minorApiLevel = 1
-        }
+    buildFeatures{
+        viewBinding = true
     }
+    namespace = "com.jeiu.mynavigationapp"
+    compileSdk = 36
+
 
     defaultConfig {
         applicationId = "com.jeiu.mynavigationapp"
@@ -35,27 +33,35 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-
-    buildFeatures{
+}
+android {
+    buildFeatures {
         viewBinding = true
     }
-}
+    namespace = "com.jeiu.mynavigationapp"
+    compileSdk = 37
 
+    defaultConfig {
+        applicationId = "com.jeiu.mynavigationapp"
+        minSdk = 28
+        targetSdk = 37
+        versionCode = 1
+        versionName = "1.0"
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+}
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation(
-        "androidx.navigation:navigation-fragment-ktx:2.10.0"
-    )
-
-    implementation(
-        "androidx.navigation:navigation-ui-ktx:2.10.0"
-    )
 
 }
